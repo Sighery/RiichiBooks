@@ -29,3 +29,6 @@ texmf/fonts/tfm/
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# Direnv #
+.direnv/
