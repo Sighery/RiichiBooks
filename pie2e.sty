@@ -16,21 +16,29 @@
 \newcommand{\mtileheight}{\dimexpr\tilesize + 0.4em\relax}
 \newcommand{\tilelabel}[1]{\scalebox{0.5}{\bfseries #1}}
 
-% Bamboo
-\newcommand{\suo}[1]{%
+\newcommand{\tilebox}[3]{%
+  % #1 = overpic options
+  % #2 = file path
+  % #3 = tile label
+  % #4 = tile number
   \begingroup
     \setlength{\fboxsep}{0pt}%
     \setlength{\fboxrule}{0.4pt}%
     \raisebox{0pt}[\mtileheight][0pt]{%
       \smash{%
         \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Sou#1.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
+          \begin{overpic}[#1]{#2}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{#3}}%
           \end{overpic}%
         }%
       }%
     }%
   \endgroup
+}
+
+% Bamboo
+\newcommand{\suo}[1]{%
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Sou#1.pdf}{#1}%
 }
 
 \newcommand{\yisuo}{\suo{1}}
@@ -44,36 +52,12 @@
 \newcommand{\jiusuo}{\suo{9}}
 % Red 5
 \newcommand{\chiwusuo}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Sou5-Dora.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Sou5-Dora.pdf}{5}%
 }
 
 % Rotated
 \newcommand{\rsuo}[1]{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Sou#1.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Sou#1.pdf}{#1}%
 }
 
 \newcommand{\ryisuo}{\rsuo{1}}
@@ -87,37 +71,13 @@
 \newcommand{\rjiusuo}{\rsuo{9}}
 % Red 5 rotated
 \newcommand{\rchiwusuo}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Sou5-Dora.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Sou5-Dora.pdf}{5}%
 }
 
 
 % Pin
 \newcommand{\tong}[1]{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Pin#1.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Pin#1.pdf}{#1}%
 }
 
 \newcommand{\yitong}{\tong{1}}
@@ -131,36 +91,12 @@
 \newcommand{\jiutong}{\tong{9}}
 % Red 5
 \newcommand{\chiwutong}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Pin5-Dora.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Pin5-Dora.pdf}{5}%
 }
 
 % Rotated
 \newcommand{\rtong}[1]{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Pin#1.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Pin#1.pdf}{#1}%
 }
 
 \newcommand{\ryitong}{\rtong{1}}
@@ -174,36 +110,12 @@
 \newcommand{\rjiutong}{\rtong{9}}
 % Red 5 rotated
 \newcommand{\rchiwutong}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Pin5-Dora.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Pin5-Dora.pdf}{5}%
 }
 
 % Characters
 \newcommand{\wan}[1]{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Man#1.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Man#1.pdf}{#1}%
 }
 
 \newcommand{\yiwan}{\wan{1}}
@@ -217,36 +129,12 @@
 \newcommand{\jiuwan}{\wan{9}}
 % Red 5
 \newcommand{\chiwuwan}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Man5-Dora.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Man5-Dora.pdf}{5}%
 }
 
 % Rotated
 \newcommand{\rwan}[1]{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Man#1.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Man#1.pdf}{#1}%
 }
 
 \newcommand{\ryiwan}{\rwan{1}}
@@ -260,275 +148,71 @@
 \newcommand{\rjiuwan}{\rwan{9}}
 % Red 5 rotated
 \newcommand{\rchiwuwan}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Man5-Dora.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Man5-Dora.pdf}{5}%
 }
 
 % East Wind
 \newcommand{\dong}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Ton.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{E}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Ton.pdf}{E}%
 }
 \newcommand{\rdong}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Ton.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{E}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Ton.pdf}{E}%
 }
 
 % South Wind
 \newcommand{\nan}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Nan.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{S}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Nan.pdf}{S}%
 }
 \newcommand{\rnan}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Nan.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{S}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Nan.pdf}{S}%
 }
 
 % West Wind
 \renewcommand{\xi}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Shaa.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{W}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Shaa.pdf}{W}%
 }
 \newcommand{\rxi}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Shaa.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{W}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Shaa.pdf}{W}%
 }
 
 % North Wind
 \newcommand{\bei}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Pei.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{N}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Pei.pdf}{N}%
 }
 \newcommand{\rbei}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Pei.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{N}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Pei.pdf}{N}%
 }
 
 % White Dragon
 \newcommand{\bai}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Haku.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{W}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Haku.pdf}{Wh}%
 }
 \newcommand{\rbai}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Haku.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{W}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Haku.pdf}{Wh}%
 }
 
 % Green Dragon
 \newcommand{\fa}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Hatsu.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{G}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Hatsu.pdf}{G}%
 }
 \newcommand{\rfa}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Hatsu.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{G}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Hatsu.pdf}{G}%
 }
 
-% White Dragon
+% Red Dragon
 \newcommand{\zhong}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Chun.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{R}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Chun.pdf}{R}%
 }
 \newcommand{\rzhong}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Chun.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{R}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Chun.pdf}{R}%
 }
 
 % Tile back (ura)
 \newcommand{\ura}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Back.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize}{tiles/Export/Regular/Back.pdf}{}%
 }
 \newcommand{\rura}{%
-  \begingroup
-    \setlength{\fboxsep}{0pt}%
-    \setlength{\fboxrule}{0.4pt}%
-    \raisebox{0pt}[\mtileheight][0pt]{%
-      \smash{%
-        \fcolorbox{black}{white}{%
-          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Back.pdf}%
-            \put(\tilelabelx, \tilelabely){\tilelabel{}}%
-          \end{overpic}%
-        }%
-      }%
-    }%
-  \endgroup
+  \tilebox{height=\tilesize,angle=90}{tiles/Export/Regular/Back.pdf}{}%
 }
 
 % Triplet (pon)
