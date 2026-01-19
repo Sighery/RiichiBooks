@@ -1,120 +1,545 @@
 % pie2e.sty  Feb. 19, 1998  Shun-ichi Ito
 % (Takayuki Yamaizumi さん作 ``pie.sty'' を LaTeX 2e 用に改変)
 % pie.sty にあって pie2e.sty にないマクロ定義を復活させてみました。
-% (March 9, 1998 Takayuki Yamaizumi) 
+% (March 9, 1998 Takayuki Yamaizumi)
 % Modified by Michał "phoe" Herda, October 1, 2019.
+% Modified by Sighery, January 19, 2026.
 %
 %      \usepackage{pie2e}
 
-\DeclareRobustCommand\piefamily{%
-  \not@math@alphabet\piefamily\relax
-  \fontencoding{U}\fontfamily{pie}\selectfont}
-\DeclareTextFontCommand{\textpie}{\piefamily}
+\RequirePackage{graphicx}
 
-\def\suo#1{{\@tempcnta=#1%
-	\piefamily\symbol{\@tempcnta}}}
-\def\yisuo{\suo{1}}
-\def\ersuo{\suo{2}}
-\def\sansuo{\suo{3}}
-\def\sisuo{\suo{4}}
-\def\wusuo{\suo{5}}
-\def\liusuo{\suo{6}}
-\def\qisuo{\suo{7}}
-\def\pasuo{\suo{8}}
-\def\jiusuo{\suo{9}}
-\def\chiwusuo{\suo{0}}
+% Global tile size
+\newcommand{\tilesize}{1.2em}
+\newcommand{\tilelabelx}{3pt}
+\newcommand{\tilelabely}{\dimexpr\tilesize+1pt\relax}
+\newcommand{\mtileheight}{\dimexpr\tilesize + 0.4em\relax}
+\newcommand{\tilelabel}[1]{\scalebox{0.5}{\bfseries #1}}
 
-\def\rsuo#1{{\@tempcnta=#1\advance\@tempcnta 40%
-        \piefamily\symbol{\@tempcnta}}}
-\def\ryisuo{\rsuo{1}}
-\def\rersuo{\rsuo{2}}
-\def\rsansuo{\rsuo{3}}
-\def\rsisuo{\rsuo{4}}
-\def\rwusuo{\rsuo{5}}
-\def\rliusuo{\rsuo{6}}
-\def\rqisuo{\rsuo{7}}
-\def\rpasuo{\rsuo{8}}
-\def\rjiusuo{\rsuo{9}}
-\def\rchiwusuo{\rsuo{0}}
+% Bamboo
+\newcommand{\suo}[1]{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Sou#1.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
 
-\def\tong#1{{\@tempcnta=#1\advance\@tempcnta 10%
-	\piefamily\symbol{\@tempcnta}}}
-\def\yitong{\tong{1}}
-\def\ertong{\tong{2}}
-\def\santong{\tong{3}}
-\def\sitong{\tong{4}}
-\def\wutong{\tong{5}}
-\def\liutong{\tong{6}}
-\def\qitong{\tong{7}}
-\def\patong{\tong{8}}
-\def\jiutong{\tong{9}}
-\def\chiwutong{\tong{0}}
+\newcommand{\yisuo}{\suo{1}}
+\newcommand{\ersuo}{\suo{2}}
+\newcommand{\sansuo}{\suo{3}}
+\newcommand{\sisuo}{\suo{4}}
+\newcommand{\wusuo}{\suo{5}}
+\newcommand{\liusuo}{\suo{6}}
+\newcommand{\qisuo}{\suo{7}}
+\newcommand{\pasuo}{\suo{8}}
+\newcommand{\jiusuo}{\suo{9}}
+% Red 5
+\newcommand{\chiwusuo}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Sou5-Dora.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
 
-\def\rtong#1{{\@tempcnta=#1\advance\@tempcnta 50%
-        \piefamily\symbol{\@tempcnta}}}
-\def\ryitong{\rtong{1}}
-\def\rertong{\rtong{2}}
-\def\rsantong{\rtong{3}}
-\def\rsitong{\rtong{4}}
-\def\rwutong{\rtong{5}}
-\def\rliutong{\rtong{6}}
-\def\rqitong{\rtong{7}}
-\def\rpatong{\rtong{8}}
-\def\rjiutong{\rtong{9}}
-\def\rchiwutong{\rtong{0}}
+% Rotated
+\newcommand{\rsuo}[1]{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Sou#1.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
 
-\def\wan#1{{\@tempcnta=#1\advance\@tempcnta 20%
-	\piefamily\symbol{\@tempcnta}}}
-\def\yiwan{\wan{1}}
-\def\erwan{\wan{2}}
-\def\sanwan{\wan{3}}
-\def\siwan{\wan{4}}
-\def\wuwan{\wan{5}}
-\def\liuwan{\wan{6}}
-\def\qiwan{\wan{7}}
-\def\pawan{\wan{8}}
-\def\jiuwan{\wan{9}}
-\def\chiwuwan{\wan{0}}
+\newcommand{\ryisuo}{\rsuo{1}}
+\newcommand{\rersuo}{\rsuo{2}}
+\newcommand{\rsansuo}{\rsuo{3}}
+\newcommand{\rsisuo}{\rsuo{4}}
+\newcommand{\rwusuo}{\rsuo{5}}
+\newcommand{\rliusuo}{\rsuo{6}}
+\newcommand{\rqisuo}{\rsuo{7}}
+\newcommand{\rpasuo}{\rsuo{8}}
+\newcommand{\rjiusuo}{\rsuo{9}}
+% Red 5 rotated
+\newcommand{\rchiwusuo}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Sou5-Dora.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
 
-\def\rwan#1{{\@tempcnta=#1\advance\@tempcnta 60%
-        \piefamily\symbol{\@tempcnta}}}
-\def\ryiwan{\rwan{1}}
-\def\rerwan{\rwan{2}}
-\def\rsanwan{\rwan{3}}
-\def\rsiwan{\rwan{4}}
-\def\rwuwan{\rwan{5}}
-\def\rliuwan{\rwan{6}}
-\def\rqiwan{\rwan{7}}
-\def\rpawan{\rwan{8}}
-\def\rjiuwan{\rwan{9}}
-\def\rchiwuwan{\rwan{0}}
 
-\def\dong{{\piefamily\symbol{31}}}
-\def\nan{{\piefamily\symbol{32}}}
-\def\xi{{\piefamily\symbol{33}}}
-\def\bei{{\piefamily\symbol{34}}}
+% Pin
+\newcommand{\tong}[1]{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Pin#1.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
 
-\def\rdong{{\piefamily\symbol{71}}}
-\def\rnan{{\piefamily\symbol{72}}}
-\def\rxi{{\piefamily\symbol{73}}}
-\def\rbei{{\piefamily\symbol{74}}}
+\newcommand{\yitong}{\tong{1}}
+\newcommand{\ertong}{\tong{2}}
+\newcommand{\santong}{\tong{3}}
+\newcommand{\sitong}{\tong{4}}
+\newcommand{\wutong}{\tong{5}}
+\newcommand{\liutong}{\tong{6}}
+\newcommand{\qitong}{\tong{7}}
+\newcommand{\patong}{\tong{8}}
+\newcommand{\jiutong}{\tong{9}}
+% Red 5
+\newcommand{\chiwutong}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Pin5-Dora.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
 
-\def\bai{{\piefamily\symbol{35}}}
-\def\fa{{\piefamily\symbol{36}}}
-\def\zhong{{\piefamily\symbol{37}}}
+% Rotated
+\newcommand{\rtong}[1]{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Pin#1.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
 
-\def\rbai{{\piefamily\symbol{75}}}
-\def\rfa{{\piefamily\symbol{76}}}
-\def\rzhong{{\piefamily\symbol{77}}}
+\newcommand{\ryitong}{\rtong{1}}
+\newcommand{\rertong}{\rtong{2}}
+\newcommand{\rsantong}{\rtong{3}}
+\newcommand{\rsitong}{\rtong{4}}
+\newcommand{\rwutong}{\rtong{5}}
+\newcommand{\rliutong}{\rtong{6}}
+\newcommand{\rqitong}{\rtong{7}}
+\newcommand{\rpatong}{\rtong{8}}
+\newcommand{\rjiutong}{\rtong{9}}
+% Red 5 rotated
+\newcommand{\rchiwutong}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Pin5-Dora.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
 
-\def\ura{{\piefamily\symbol{30}}}
+% Characters
+\newcommand{\wan}[1]{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Man#1.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
 
-\def\rura{{\piefamily\symbol{70}}}
+\newcommand{\yiwan}{\wan{1}}
+\newcommand{\erwan}{\wan{2}}
+\newcommand{\sanwan}{\wan{3}}
+\newcommand{\siwan}{\wan{4}}
+\newcommand{\wuwan}{\wan{5}}
+\newcommand{\liuwan}{\wan{6}}
+\newcommand{\qiwan}{\wan{7}}
+\newcommand{\pawan}{\wan{8}}
+\newcommand{\jiuwan}{\wan{9}}
+% Red 5
+\newcommand{\chiwuwan}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Man5-Dora.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
 
-\def\kotsu#1{#1#1#1}
-\def\minkan#1{#1#1#1#1}
-\def\ankan#1{\ura#1#1\ura}
-\def\toitsu#1{#1#1}
-\def\atama#1{#1#1}
+% Rotated
+\newcommand{\rwan}[1]{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Man#1.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{#1}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+
+\newcommand{\ryiwan}{\rwan{1}}
+\newcommand{\rerwan}{\rwan{2}}
+\newcommand{\rsanwan}{\rwan{3}}
+\newcommand{\rsiwan}{\rwan{4}}
+\newcommand{\rwuwan}{\rwan{5}}
+\newcommand{\rliuwan}{\rwan{6}}
+\newcommand{\rqiwan}{\rwan{7}}
+\newcommand{\rpawan}{\rwan{8}}
+\newcommand{\rjiuwan}{\rwan{9}}
+% Red 5 rotated
+\newcommand{\rchiwuwan}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Man5-Dora.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{5}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+
+% East Wind
+\newcommand{\dong}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Ton.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{E}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+\newcommand{\rdong}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Ton.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{E}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+
+% South Wind
+\newcommand{\nan}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Nan.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{S}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+\newcommand{\rnan}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Nan.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{S}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+
+% West Wind
+\renewcommand{\xi}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Shaa.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{W}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+\newcommand{\rxi}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Shaa.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{W}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+
+% North Wind
+\newcommand{\bei}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Pei.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{N}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+\newcommand{\rbei}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Pei.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{N}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+
+% White Dragon
+\newcommand{\bai}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Haku.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{W}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+\newcommand{\rbai}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Haku.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{W}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+
+% Green Dragon
+\newcommand{\fa}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Hatsu.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{G}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+\newcommand{\rfa}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Hatsu.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{G}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+
+% White Dragon
+\newcommand{\zhong}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Chun.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{R}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+\newcommand{\rzhong}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Chun.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{R}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+
+% Tile back (ura)
+\newcommand{\ura}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize]{tiles/Export/Regular/Back.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+\newcommand{\rura}{%
+  \begingroup
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{0.4pt}%
+    \raisebox{0pt}[\mtileheight][0pt]{%
+      \smash{%
+        \fcolorbox{black}{white}{%
+          \begin{overpic}[height=\tilesize,angle=90]{tiles/Export/Regular/Back.pdf}%
+            \put(\tilelabelx, \tilelabely){\tilelabel{}}%
+          \end{overpic}%
+        }%
+      }%
+    }%
+  \endgroup
+}
+
+% Triplet (pon)
+\newcommand{\kotsu}[1]{#1#1#1}
+% Open kan
+\newcommand{\minkan}[1]{#1#1#1#1}
+% Closed kan (ura on ends)
+\newcommand{\ankan}[1]{\ura#1#1\ura}
+% Pair
+\newcommand{\toitsu}[1]{#1#1}
+% Head (same as pair)
+\newcommand{\atama}[1]{#1#1}
 
 \endinput
