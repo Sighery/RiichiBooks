@@ -1,0 +1,79 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+
+    outputs:
+      tag: ${{ steps.tag_name.outputs.tag }}
+
+    steps:
+      - name: Parse tag
+        id: tag_name
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Create draft release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          name: ${{ steps.tag_name.outputs.tag }}
+
+
+  build:
+    runs-on: ubuntu-latest
+    needs: create-release
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get -qq update -y
+          sudo apt-get -qq install -y texlive-latex-base texlive-latex-extra \
+            texlive-luatex texlive-lang-japanese texlive-fonts-recommended \
+            tex-gyre tipa
+
+      - name: Build PDF
+        run: |
+          make clean
+          make
+
+      - name: Upload to workflow artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: RiichiBook1
+          path: RiichiBook1.pdf
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          files: RiichiBook1.pdf
+
+
+  publish-release:
+    runs-on: ubuntu-latest
+    needs: [create-release, build]
+
+    steps:
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: false
+          make_latest: true
